@@ -1,0 +1,139 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+}
+
+body {
+  background-image:url('./whirlpool.png'), linear-gradient(90deg, rgba(104, 198, 23, 0.6), rgba(104, 198, 232, 0.6) ) ;
+  background-blend-mode: multiply;
+  width: 100%;
+  height: 100%;
+
+  font-family: 'Mansalva','Noto Sans JP', sans-serif;
+}
+
+ul {
+  list-style: none;
+}
+
+.clickable {
+  cursor:pointer;
+}
+
+nav ul li {
+  display: inline-block;
+  padding: 6px;
+  font-size: 1.3rem;
+  margin: 6px;
+  float: right;
+}
+
+.logo {
+  padding: 6px;
+  margin: 6px;
+  font-size: 1.3rem;
+  float:left;
+  display: inline-block;
+}
+
+.nav-div {
+  height: auto;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.6);
+  box-shadow: 0 3px 5px 3px rgba(0,0,0,0.7);
+  backdrop-filter: blur(2px);
+}
+
+main {
+margin: auto;
+background-color: rgba(0,0,0,0.5);
+height: auto;
+max-width: 1200px;
+}
+
+.main-column {
+ display: grid;
+ min-height: 310px;
+ grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+ justify-content: space-evenly;
+}
+
+.book-tab {
+  text-align: center;
+  height: 300px;
+  margin-top: 15px;
+  padding: 3px;
+  background-color: rgba(50,200,50,0.3);
+}
+.book-tab-inside{
+  width: 100%;
+  height: 100%;
+  background-color: rgba(200,50,50,0.3);
+}
+
+@media screen and (max-width: 970px) {
+  .main-column {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 830px) {
+  .main-column {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .main-column {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .main-column {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* MODAL */
+.modal {
+  position: fixed;
+  top:0;
+  left:0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.4);
+  backdrop-filter: blur(3px);
+}
+
+.modal-content {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translate(-50%,0);
+  width: 400px;
+  height: 500px;
+  background-color: rgba(200,77,0,0.3);
+}
+
+form * {
+  padding: 3px;
+  margin: 5px;
+}
+
+form label {
+  display: block;
+}
+
+.close-modal {
+  position: absolute;
+  right: 0;
+  padding: 15px;
+  line-height: 2rem;
+  font-size: 2rem;
+  font-weight: bolder;
+  top: 0;
+}
