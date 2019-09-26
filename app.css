@@ -11,9 +11,10 @@ body {
   background-blend-mode: multiply;
   width: 100%;
   height: 100%;
-
   font-family: 'Mansalva','Noto Sans JP', sans-serif;
 }
+
+
 
 ul {
   list-style: none;
@@ -63,15 +64,32 @@ max-width: 1200px;
 
 .book-tab {
   text-align: center;
-  height: 300px;
-  margin-top: 15px;
+  height: auto;
+  margin: 15px 5px;
   padding: 3px;
   background-color: rgba(50,200,50,0.3);
 }
 .book-tab-inside{
   width: 100%;
-  height: 100%;
+  height: 375px;
   background-color: rgba(200,50,50,0.3);
+}
+
+img {
+  width: 100%;
+  height: calc(375px - 77px);
+  object-fit: scale-down;
+}
+
+.book-tab-info {
+  height: 40px;
+  width: 100%;
+}
+
+.book-tab-info p {
+  margin: 0;
+  font-size: 0.75rem;
+  padding: 3px;
 }
 
 @media screen and (max-width: 970px) {
