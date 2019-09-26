@@ -7,7 +7,7 @@
 }
 
 body {
-  background-image:url('./whirlpool.png'), linear-gradient(90deg, rgba(104, 198, 23, 0.6), rgba(104, 198, 232, 0.6) ) ;
+  background-image:url('./whirlpool.png'), linear-gradient(90deg, rgba(254, 198, 23, 0.2), rgba(104, 198, 232, 0.2) ) ;
   background-blend-mode: multiply;
   width: 100%;
   height: 100%;
@@ -43,20 +43,21 @@ nav ul li {
 .nav-div {
   height: auto;
   overflow: auto;
-  background-color: rgba(0,0,0,0.6);
-  box-shadow: 0 3px 5px 3px rgba(0,0,0,0.7);
+  background-color: rgba(255,255,255,0.6);
+  box-shadow: 0 3px 5px 3px rgba(0,0,0,0.2);
   backdrop-filter: blur(2px);
 }
 
 main {
 margin: auto;
-background-color: rgba(0,0,0,0.5);
+background-color: #fff;
 height: auto;
 max-width: 1200px;
 }
 
 .main-column {
  display: grid;
+
  min-height: 310px;
  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
  justify-content: space-evenly;
@@ -65,20 +66,27 @@ max-width: 1200px;
 .book-tab {
   text-align: center;
   height: auto;
-  margin: 15px 5px;
+  margin: 15px 5px 38px;
   padding: 3px;
+  position: relative;
   background-color: rgba(50,200,50,0.3);
 }
+
 .book-tab-inside{
+  position: relative;
   width: 100%;
   height: 375px;
-  background-color: rgba(200,50,50,0.3);
+  background-color: #C3B596;
 }
 
 img {
   width: 100%;
-  height: calc(375px - 77px);
-  object-fit: scale-down;
+  height: 301px;
+  object-fit: cover;
+}
+
+img:hover {
+  box-shadow: 0 3px 5px rgba(0,0,0,0.4) inset;
 }
 
 .book-tab-info {
@@ -101,6 +109,10 @@ img {
 @media screen and (max-width: 830px) {
   .main-column {
     grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  img {
+    object-fit: scale-down;
   }
 }
 
@@ -125,6 +137,7 @@ img {
   height: 100%;
   background-color: rgba(0,0,0,0.4);
   backdrop-filter: blur(3px);
+  display: none;
 }
 
 .modal-content {
@@ -154,4 +167,82 @@ form label {
   font-size: 2rem;
   font-weight: bolder;
   top: 0;
+}
+
+.icon, .delete-button {
+  position: absolute;
+  top:100%;
+  left:-2px;
+  width: 70px;
+  padding: 6px;
+  border-radius: 0 0 10px 10px;
+  font-size:1.4rem;
+  line-height: 1.4rem;
+  background-color: #C3B596;
+  border: 2px solid #Cfff9f;
+  border-top: 1px solid grey;
+  color: black;
+}
+
+.delete-button {
+  left: calc(100% - 68px);
+}
+
+/* BOOK INFO */
+.book-info {
+  z-index: 3;
+  position: absolute;
+  left: calc(100% + 8px);
+  top: 0;
+  width: 250px;
+  height: 300px;
+  backdrop-filter: blur(3px);
+  background-color: rgba(255, 252, 253,0.7);
+  border: solid 2px black;
+  display: none;
+  border-radius: 5px;
+}
+
+.book-info::before {
+  content: " ";
+  height: 0;
+  position: absolute;
+  top: 22px;
+  width: 0;
+  z-index: 1;
+  right: 100%;
+  border: medium solid black;
+  border-width: 10px 10px 10px 0;
+  border-color: transparent black transparent transparent;
+}
+
+.book-tab:hover .book-info {
+  display: block;
+}
+
+.line {
+  height: 3px;
+  margin:1px auto;
+  display: inline-block;
+  width: 50px;
+  background-color: red;
+  opacity: 0;
+  animation: lineWidth 1.7s ease-out forwards;
+}
+
+@keyframes lineWidth {
+  from {width:5px}
+  to {width:90%; opacity:1}
+}
+
+.book-info p {
+  text-align: left;
+  font-size: 0.8rem;
+  margin: 2px 7px;
+}
+
+.rating {
+  text-align: center !important;
+  font-size: 1.3rem !important;
+  font-weight: 900;
 }
