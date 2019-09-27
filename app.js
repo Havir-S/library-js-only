@@ -12,8 +12,9 @@ function Book(author,year,title,rating,isbn,isRead,img,description) {
   this.description = description;
 }
 
-Book.prototype.readingProcessChange = () => {
-  this.isRead = !(this.isRead);
+Book.prototype.readingProcessChange = function() {
+  console.log('ding');
+  this.isRead = (!this.isRead);
 }
 
 function addBookToLibrary(book) {
@@ -65,19 +66,58 @@ let createBookTab = (n) => {
   //BOOK-TAB-INFO
   var book_tab_info = document.createElement('div');
   book_tab_info.className = 'book-tab-info';
-  book_tab_info.innerHTML = '<hr><hr>';
+  book_tab_info.innerHTML = '<hr><p>' + book.title + '</p>';
+  book_tab_info.innerHTML += '<p>' + book.author + '</p>';
   book_tab_inside.appendChild(book_tab_info);
 
+  //ICONS
+  var book_icon = document.createElement('div');
+  book_icon.className = 'icon clickable';
+  if (book.isRead) {
+    book_icon.innerHTML = '<i class="fas fa-book-open" aria-hidden="true"></i>';
+  } else {
+    book_icon.innerHTML = '<i class="fas fa-book" aria-hidden="true"></i>';
+  }
+
+  book_icon.addEventListener('click', function() {
+    book.readingProcessChange();
+    if (book.isRead) {
+      book_icon.innerHTML = '<i class="fas fa-book-open" aria-hidden="true"></i>';
+    } else {
+      book_icon.innerHTML = '<i class="fas fa-book" aria-hidden="true"></i>';
+    }
+  })
+
+  book_tab_inside.appendChild(book_icon);
 
   //DELETE BOOK BUTTON
-  var delete_button = document.createElement('div');
-  delete_button.innerHTML = 'Click me to delete this';
-  book_tab_inside.appendChild(delete_button);
+  var book_icon_delete = document.createElement('div');
+  book_icon_delete.className = 'delete-button clickable';
+  book_icon_delete.innerHTML = '<i class="fa fa-trash-alt" aria-hidden="true"</i>';
+  book_tab_inside.appendChild(book_icon_delete);
+
+  //BLOCK INFO
+  var book_tab_invisible_info = document.createElement('div');
+  book_tab_invisible_info.className = 'book-info';
+
+  var desc = book.description.slice(0,90) + '...';
+
+  book_tab_invisible_info.innerHTML = '<div class="book-info-inside">'+ '<h3>' + book.title + '</h3>' +
+  '<div class="line"></div>' +
+  '<p data-infoindex="1">Author: ' + book.author + '</p>' +
+  '<p data-infoindex="2">Year published: ' + book.year + '</p>' +
+  '<p data-infoindex="3">ISBN: ' + book.isbn + '</p>' +
+  '<p data-infoindex="4">Description: </p>' +
+  '<p data-infoindex="5">' + desc + '</p>' +
+  '<div class="line"></div>' +
+  '<p class="rating">' + book.rating + '</p>' +
+  '</div>';
+
+  book_tab.appendChild(book_tab_invisible_info);
 
 
 
-
-  delete_button.addEventListener('click', function() {
+  book_icon_delete.addEventListener('click', function() {
     console.log(n);
     deleteBook(n);
   });
@@ -121,6 +161,7 @@ closeModal.addEventListener('click', function() {
 let newBookButton = document.getElementById('newBookButton');
 let form = document.forms[0];
 newBookButton.onclick = function() {
+  var i;
   var author = form['author'].value;
   var year = form['year'].value;
   var title = form['title'].value;
@@ -128,9 +169,17 @@ newBookButton.onclick = function() {
   var isbn = form['isbn'].value;
   var isRead = false;
   var img = form['img'].value;
-  var book = new Book(author,year,title,rating,isbn,isRead,img);
+  var description = form['description'].value;
+  var book = new Book(author,year,title,rating,isbn,isRead,img,description);
   modal.style.display="none";
   addBookToLibrary(book);
+
+  for (i=0; i < form.childElementCount; i++) {
+    console.log(form.children[i]);
+    if (form.children[i].nodeName == 'INPUT') {
+      form.children[i].value = "";
+    }
+  }
 }
 
 /* POPULATE FUNCTION */
