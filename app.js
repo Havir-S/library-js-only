@@ -120,11 +120,11 @@ let createBookTab = (n) => {
 
   book_tab_invisible_info.innerHTML = '<div class="book-info-inside">'+ '<h3>' + book.title + '</h3>' +
   '<div class="line"></div>' +
-  '<p data-infoindex="1">Author: ' + book.author + '</p>' +
-  '<p data-infoindex="2">Year published: ' + book.year + '</p>' +
-  '<p data-infoindex="3">ISBN: ' + book.isbn + '</p>' +
-  '<p data-infoindex="4">Description: </p>' +
-  '<p data-infoindex="5">' + desc + '</p>' +
+  '<p data-infoIndex="1">Author: ' + book.author + '</p>' +
+  '<p data-infoIndex="2">Year published: ' + book.year + '</p>' +
+  '<p data-infoIndex="3">ISBN: ' + book.isbn + '</p>' +
+  '<p data-infoIndex="4">Description: </p>' +
+  '<p data-infoIndex="5">' + desc + '</p>' +
   '<div class="line"></div>' +
   '<p class="rating">' + book.rating + '</p>' +
   '</div>';
@@ -219,6 +219,14 @@ let populate = () => {
   addBookToLibrary(d);
   addBookToLibrary(e);
 }
-
-
 populate();
+
+// TEST enough space
+var last = mainColumn.children[4].children[1];
+var parent = mainColumn.parentElement.parentElement;
+var d = (parent.offsetWidth - mainColumn.offsetWidth)/2;
+if (250 < d) {
+  console.log('c ma miejsce');
+} else {
+  console.log('c nie ma miejsca');
+}

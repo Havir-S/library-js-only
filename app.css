@@ -1,3 +1,9 @@
+:root {
+  --variable-index: calc(attr(data-indexInfo) / 5) {
+
+  }
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -12,6 +18,7 @@ body {
   width: 100%;
   height: 100%;
   font-family: 'Mansalva','Noto Sans JP', sans-serif;
+  overflow: hidden;
 }
 
 
@@ -138,6 +145,7 @@ img:hover {
   background-color: rgba(0,0,0,0.4);
   backdrop-filter: blur(3px);
   display: none;
+  animation: modalAppear 0.7s forwards;
 }
 
 .modal-content {
@@ -147,26 +155,73 @@ img:hover {
   transform: translate(-50%,0);
   width: 400px;
   height: 600px;
-  background-color: rgba(200,77,0,0.3);
+  background-color: rgba(170,77,0,0.9);
+  border-radius: 4px;
+  animation: modalContentAppear 0.7s forwards;
+}
+
+@keyframes modalAppear {
+  from {backdrop-filter: blur(0);}
+  to {backdrop-filter: blur(2px);}
+}
+
+@keyframes modalContentAppear {
+  from {transform: translate(-50%,0) scale(0);}
+  to {transform: translate(-50%,0) scale(1);}
+}
+
+form {
+  text-align: center;
 }
 
 form * {
   padding: 3px;
   margin: 5px;
+  color: pink;
 }
 
 form label {
   display: block;
 }
 
+form input {
+  width: 90%;
+  height:1.7rem;
+  background-color: rgba(0,0,0,0.3);
+  border: 1px solid grey;
+  line-height: 1.5rem;
+  margin: auto;
+}
+
+form input:focus {
+  outline:none;
+}
+
+form button {
+  margin: 18px;
+  padding: 5px 15px;
+  color: black;
+  border: 0;
+  background-color: orange;
+  cursor: pointer;
+}
+
 .close-modal {
   position: absolute;
   right: 0;
-  padding: 15px;
+  padding: 12px;
+  margin: 4px;
   line-height: 2rem;
   font-size: 2rem;
   font-weight: bolder;
   top: 0;
+  transition: all 0.2s;
+}
+
+.close-modal:hover {
+  color: white;
+  background-color: rgba(255,255,255,0.3);
+  border-radius: 100%;
 }
 
 .icon, .delete-button {
@@ -201,7 +256,7 @@ form label {
   left: calc(100% + 8px);
   top: 0;
   width: 250px;
-  height: 300px;
+  min-height: 300px;
   backdrop-filter: blur(3px);
   background-color: rgba(255, 252, 253,0.7);
   border: solid 2px black;
@@ -279,6 +334,10 @@ form label {
 .book-info p[data-infoIndex='5'] {
   word-break: break-all;
   animation: bookInfoP 1.3s forwards;
+}
+
+.book-info p[data-infoIndex= --variable-index] {
+  color: red;
 }
 
 @keyframes bookInfoP {
