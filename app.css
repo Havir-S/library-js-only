@@ -325,6 +325,12 @@ form label {
   transform: translate(-50%, -50%);
   left:50%;
   top:50%;
+  animation: bookIcon 0.4s forwards;
+}
+
+@keyframes bookIcon {
+  from {transform: translate(-50%, -50%) rotate(0)}
+  to {transform: translate(-50%, -50%) rotate(360deg)}
 }
 
 .fa-bookmark {

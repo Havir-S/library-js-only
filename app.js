@@ -74,17 +74,33 @@ let createBookTab = (n) => {
   var book_icon = document.createElement('div');
   book_icon.className = 'icon clickable';
   if (book.isRead) {
-    book_icon.innerHTML = '<i class="fas fa-book-open" aria-hidden="true"></i>';
+    book_icon.innerHTML = '<i class="fas fa-bookmark" aria-hidden="true"></i>';
+    book_icon.innerHTML += '<i class="fas fa-book-open book-icon book-icon-from" aria-hidden="true"></i>';
+    book_icon.innerHTML += '<i class="fas fa-book book-icon book-icon-to" aria-hidden="true"></i>';
+
   } else {
-    book_icon.innerHTML = '<i class="fas fa-book" aria-hidden="true"></i>';
+    book_icon.innerHTML = '<i class="fas fa-bookmark" aria-hidden="true"></i>';
+    book_icon.innerHTML += '<i class="fas fa-book-open book-icon book-icon-to" aria-hidden="true"></i>';
+    book_icon.innerHTML += '<i class="fas fa-book book-icon book-icon-from" aria-hidden="true"></i>';
+
   }
 
   book_icon.addEventListener('click', function() {
     book.readingProcessChange();
     if (book.isRead) {
-      book_icon.innerHTML = '<i class="fas fa-book-open" aria-hidden="true"></i>';
+      while(book_icon.firstChild) {
+        book_icon.removeChild(book_icon.firstChild);
+      }
+      book_icon.innerHTML = '<i class="fas fa-bookmark" aria-hidden="true"></i>';
+      book_icon.innerHTML += '<i class="fas fa-book-open book-icon book-icon-from" aria-hidden="true"></i>';
+      book_icon.innerHTML += '<i class="fas fa-book book-icon book-icon-to" aria-hidden="true"></i>';
     } else {
-      book_icon.innerHTML = '<i class="fas fa-book" aria-hidden="true"></i>';
+      while(book_icon.firstChild) {
+        book_icon.removeChild(book_icon.firstChild);
+      }
+      book_icon.innerHTML = '<i class="fas fa-bookmark" aria-hidden="true"></i>';
+      book_icon.innerHTML += '<i class="fas fa-book-open book-icon book-icon-to" aria-hidden="true"></i>';
+      book_icon.innerHTML += '<i class="fas fa-book book-icon book-icon-from" aria-hidden="true"></i>';
     }
   })
 
@@ -156,6 +172,12 @@ closeModal.addEventListener('click', function() {
   modal.style.display = 'none';
 })
 
+modal.addEventListener('click',function(e) {
+  if (e.target == modal) {
+    this.style.display = 'none';
+  }
+})
+
 /* NEW BOOK */
 
 let newBookButton = document.getElementById('newBookButton');
@@ -190,11 +212,13 @@ let populate = () => {
   var b =new Book('Eiji Yoshikawa','2012','Musashi: An Epic Novel of the Samurai Era','9/10','9781568364278',false,'./books/musashi.jpg','Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum ');
   var c =new Book('Sun Tzu','2015','The Art Of War: Slip-Case Edition','8/10','1784048178',false,'./books/art-of-war.jpg','Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum ');
   var d =new Book('JRR Tolkien','2012','The Hobbit','8/10','978-0547928227',false,'./books/hobbit.jpg','Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum ');
+  var e =new Book('Jules Verne','1873','Around the world in eighty days','7/10','978-1503215153',false,'./books/eightydays.jpg','Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum ');
   addBookToLibrary(a);
   addBookToLibrary(b);
   addBookToLibrary(c);
   addBookToLibrary(d);
+  addBookToLibrary(e);
 }
 
 
-// populate();
+populate();
