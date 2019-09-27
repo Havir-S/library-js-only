@@ -1,7 +1,6 @@
 :root {
-  --variable-index: calc(attr(data-indexInfo) / 5) {
-
-  }
+  --variable-index: calc(attr(data-indexInfo) / 5);
+  --border-color: #ccdbc8;
 }
 
 * {
@@ -76,7 +75,8 @@ max-width: 1200px;
   margin: 15px 5px 38px;
   padding: 3px;
   position: relative;
-  background-color: rgba(50,200,50,0.3);
+  background-color: var(--border-color);
+
 }
 
 .book-tab-inside{
@@ -202,8 +202,17 @@ form button {
   padding: 5px 15px;
   color: black;
   border: 0;
+  font-size: 1.3rem;
   background-color: orange;
   cursor: pointer;
+  border-radius: 3px;
+  box-shadow: 0 0 6px rgba(0,0,0,0.2), 0 2px 4px rgba(0,0,0,0.6);
+}
+
+form button:hover {
+  color: white;
+  background-color: darkorange;
+  box-shadow: 0 0 6px rgba(0,0,0,0.4), 0 2px 4px 1px rgba(0,0,0,0.6);
 }
 
 .close-modal {
@@ -234,7 +243,7 @@ form button {
   font-size:1.4rem;
   line-height: 1.4rem;
   background-color: #C3B596;
-  border: 2px solid #Cfff9f;
+  border: 2px solid var(--border-color);
   border-top: 1px solid grey;
   color: black;
 }
@@ -294,6 +303,7 @@ form button {
 
 .book-tab:hover {
   box-shadow: 0 0 5px rgba(0,0,0,0.6);
+  margin:1px;
 }
 
 .line {
@@ -336,9 +346,9 @@ form button {
   animation: bookInfoP 1.3s forwards;
 }
 
-.book-info p[data-infoIndex= --variable-index] {
+/* .book-info p[data-infoIndex= --variable-index] {
   color: red;
-}
+} */
 
 @keyframes bookInfoP {
   from {left: -100%;}
@@ -395,3 +405,38 @@ form button {
 .fa-bookmark {
   opacity: 0;
 }
+
+.library {
+  user-select: none;
+}
+
+@media screen and (max-width: 1180px) {
+  .book-info {
+    z-index: 3;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+    min-height: 303px;
+    backdrop-filter: blur(3px);
+    background-color: rgba(255, 252, 253,0.5);
+    border: solid 1px black;
+    display: none;
+    border-radius: 2px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.5);
+    animation: bookInfo 0.15s forwards ease-in;
+  }
+  .book-info::after {
+    content: "";
+    height: 0;
+    position: absolute;
+    top: 22px;
+    width: 0;
+    z-index: 4;
+    right: 100%;
+    border:0;
+  }
+}
+
+/* FIX THE RIGHT TABS */

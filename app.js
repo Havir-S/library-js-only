@@ -13,7 +13,6 @@ function Book(author,year,title,rating,isbn,isRead,img,description) {
 }
 
 Book.prototype.readingProcessChange = function() {
-  console.log('ding');
   this.isRead = (!this.isRead);
 }
 
@@ -134,7 +133,6 @@ let createBookTab = (n) => {
 
 
   book_icon_delete.addEventListener('click', function() {
-    console.log(n);
     deleteBook(n);
   });
 
@@ -154,10 +152,12 @@ function render() {
     mainColumn.removeChild(mainColumn.firstChild);
   }
   var n = 0;
-  for(book in myLibrary) {
-    createBookTab(n);
-    n++;
-  }
+    for(book in myLibrary) {
+      createBookTab(n);
+      n++;
+    }
+
+
 }
 
 /* MODAL */
@@ -197,7 +197,6 @@ newBookButton.onclick = function() {
   addBookToLibrary(book);
 
   for (i=0; i < form.childElementCount; i++) {
-    console.log(form.children[i]);
     if (form.children[i].nodeName == 'INPUT') {
       form.children[i].value = "";
     }
@@ -219,14 +218,28 @@ let populate = () => {
   addBookToLibrary(d);
   addBookToLibrary(e);
 }
+
 populate();
 
 // TEST enough space
-var last = mainColumn.children[4].children[1];
-var parent = mainColumn.parentElement.parentElement;
-var d = (parent.offsetWidth - mainColumn.offsetWidth)/2;
-if (250 < d) {
-  console.log('c ma miejsce');
-} else {
-  console.log('c nie ma miejsca');
-}
+// var last = mainColumn.children[4].children[1];
+// var parent = mainColumn.parentElement.parentElement;
+// var d = (parent.offsetWidth - mainColumn.offsetWidth)/2;
+// if (250 < d) {
+//   console.log('c ma miejsce');
+// } else {
+//   console.log('c nie ma miejsca');
+// }
+
+
+// LOCAL STORAGE --------- Forgot You can't transport objects through localStorage, I'm aborting the mission, I'd rather do that with backend
+//
+// if (sessionStorage) {
+//   if (sessionStorage.visited == 'true') {
+//     myLibrary = sessionStorage.getItem('library');
+//   } else {
+//     populate();
+//     sessionStorage.visited = true;
+//   }
+// } else {
+// }
