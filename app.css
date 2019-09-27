@@ -146,7 +146,7 @@ img:hover {
   left: 50%;
   transform: translate(-50%,0);
   width: 400px;
-  height: 500px;
+  height: 600px;
   background-color: rgba(200,77,0,0.3);
 }
 
@@ -201,15 +201,25 @@ form label {
   border: solid 2px black;
   display: none;
   border-radius: 5px;
+  animation: bookInfo 0.15s forwards ease-in;
 }
 
-.book-info::before {
+@keyframes bookInfo {
+  from {opacity: 0; filter:blur(3px)}
+  to {opacity:1; filter:blur(0)}
+}
+
+.book-info-inside {
+  overflow: hidden;
+}
+
+.book-info::after {
   content: " ";
   height: 0;
   position: absolute;
   top: 22px;
   width: 0;
-  z-index: 1;
+  z-index: 4;
   right: 100%;
   border: medium solid black;
   border-width: 10px 10px 10px 0;
@@ -239,10 +249,43 @@ form label {
   text-align: left;
   font-size: 0.8rem;
   margin: 2px 7px;
+  position: relative;
+  animation: bookInfoP 1s forwards;
+}
+
+.book-info p[data-infoIndex='1'] {
+  animation: bookInfoP 0.8s forwards;
+}
+.book-info p[data-infoIndex='2'] {
+  animation: bookInfoP 0.9s forwards;
+}
+.book-info p[data-infoIndex='3'] {
+  animation: bookInfoP 1s forwards;
+}
+.book-info p[data-infoIndex='4'] {
+  animation: bookInfoP 1.1s forwards;
+}
+.book-info p[data-infoIndex='5'] {
+  animation: bookInfoP 1.3s forwards;
+}
+
+@keyframes bookInfoP {
+  from {left: -100%;}
+  to {left:0}
 }
 
 .rating {
   text-align: center !important;
   font-size: 1.3rem !important;
   font-weight: 900;
+}
+
+.footer {
+  font-size: 0.7rem;
+  color: orange;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  text-align: center;
+  background-color: black;
 }

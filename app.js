@@ -1,6 +1,6 @@
 let myLibrary = [];
 
-function Book(author,year,title,rating,isbn,isRead,img) {
+function Book(author,year,title,rating,isbn,isRead,img,description) {
 
   this.author = author;
   this.year = year;
@@ -9,6 +9,7 @@ function Book(author,year,title,rating,isbn,isRead,img) {
   this.isbn = isbn;
   this.isRead = isRead;
   this.img = img;
+  this.description = description;
 }
 
 Book.prototype.readingProcessChange = () => {
@@ -103,23 +104,6 @@ function render() {
   }
 }
 
-/* NEW BOOK */
-
-
-let newBookButton = document.getElementById('newBookButton');
-let form = document.forms[0];
-newBookButton.onclick = function() {
-  var author = form['author'].value;
-  var year = form['year'].value;
-  var title = form['title'].value;
-  var rating = form['rating'].value;
-  var isbn = form['isbn'].value;
-  var isRead = false;
-  var img = form['img'].value;
-  var book = new Book(author,year,title,rating,isbn,isRead,img);
-  addBookToLibrary(book);
-}
-
 /* MODAL */
 let modal = document.querySelector('.modal');
 let closeModal = document.querySelector('.close-modal');
@@ -132,15 +116,31 @@ closeModal.addEventListener('click', function() {
   modal.style.display = 'none';
 })
 
+/* NEW BOOK */
+
+let newBookButton = document.getElementById('newBookButton');
+let form = document.forms[0];
+newBookButton.onclick = function() {
+  var author = form['author'].value;
+  var year = form['year'].value;
+  var title = form['title'].value;
+  var rating = form['rating'].value;
+  var isbn = form['isbn'].value;
+  var isRead = false;
+  var img = form['img'].value;
+  var book = new Book(author,year,title,rating,isbn,isRead,img);
+  modal.style.display="none";
+  addBookToLibrary(book);
+}
 
 /* POPULATE FUNCTION */
 // author,year,title,rating,isbn,isRead,img
 
 let populate = () => {
-  var a =new Book('JRR Tolkien','2005','The Fellowship of The Ring','9/10','978-0-00-720354-3',false,'./books/tolkien-tfotr.jpg');
-  var b =new Book('Eiji Yoshikawa','2012','Musashi: An Epic Novel of the Samurai Era','9/10','9781568364278',false,'./books/musashi.jpg');
-  var c =new Book('Sun Tzu','2015','The Art Of War: Slip-Case Edition','8/10','1784048178',false,'./books/art-of-war.jpg');
-  var d =new Book('JRR Tolkien','2012','The Hobbit','8/10','978-0547928227',false,'./books/hobbit.jpg');
+  var a =new Book('JRR Tolkien','2005','The Fellowship of The Ring','9/10','978-0-00-720354-3',false,'./books/tolkien-tfotr.jpg','Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum ');
+  var b =new Book('Eiji Yoshikawa','2012','Musashi: An Epic Novel of the Samurai Era','9/10','9781568364278',false,'./books/musashi.jpg','Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum ');
+  var c =new Book('Sun Tzu','2015','The Art Of War: Slip-Case Edition','8/10','1784048178',false,'./books/art-of-war.jpg','Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum ');
+  var d =new Book('JRR Tolkien','2012','The Hobbit','8/10','978-0547928227',false,'./books/hobbit.jpg','Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum ');
   addBookToLibrary(a);
   addBookToLibrary(b);
   addBookToLibrary(c);

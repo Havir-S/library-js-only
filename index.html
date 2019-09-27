@@ -39,15 +39,17 @@
               </div>
             </div>
             <div class="book-info">
-              <h3>Musashi: An Epic Novel of the Samurai Era</h3>
-              <div class="line"></div>
-              <p>Author: Eiji Yoshikawa</p>
-              <p>Year published: 2012</p>
-              <p>ISBN: 123456789</p>
-              <p>Description:</p>
-              <p>Lorem ispum lorem ispum lorem ispum lorem ispum lorem ispum lorem ispum lorem ispum </p>
-              <div class="line"></div>
-              <p class='rating'>8/10</p>
+              <div class="book-info-inside">
+                <h3>Musashi: An Epic Novel of the Samurai Era</h3>
+                <div class="line"></div>
+                <p data-infoIndex='1'>Author: Eiji Yoshikawa</p>
+                <p data-infoIndex='2'>Year published: 2012</p>
+                <p data-infoIndex='3'>ISBN: 123456789</p>
+                <p data-infoIndex='4'>Description:</p>
+                <p data-infoIndex='5'>Lorem ispum lorem ispum lorem ispum lorem ispum lorem ispum lorem ispum lorem ispum </p>
+                <div class="line"></div>
+                <p class='rating'>8/10</p>
+              </div>
             </div>
           </div>
           <div class="book-tab">
@@ -71,6 +73,7 @@
 
 
     </div>
+    <div class="footer">It was such a pain to make everything manually without an actual render engine. But At least it was fun so yeah!</div>
 
     <div class="modal">
       <div class="modal-content">
@@ -80,6 +83,8 @@
           <input type="text" name="title" value="" placeholder="Type the title here..." required>
           <label for="author">Author:</label>
           <input type="text" name="author" value="" placeholder="Type the author here..." required>
+          <label for="description">Description:</label>
+          <input type="text" name="description" value="" placeholder="Type the description here..." required>
           <label for="year">Year:</label>
           <input type="text" name="year" value="" placeholder="Type the year here..." required>
           <label for="rating">Rating:</label>
