@@ -1,0 +1,19 @@
+{
+  "name": "books-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Havir-S/library-js-only.git"
+  },
+  "author": "Christopher",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Havir-S/library-js-only/issues"
+  },
+  "homepage": "https://github.com/Havir-S/library-js-only#readme"
+}
